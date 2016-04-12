@@ -9,28 +9,28 @@ class PlacesController < ApplicationController
         @place = Place.new
 	end
 
-    def create
+  def create
         @place = current_user.places.create(place_params)
         if @place.valid?
            redirect_to root_path
         else
            render :new, status: :unprocessable_entity
         end
-    end
+  end
 
-    def show
+  def show
        @place = Place.find(params[:id])
-    end
+  end
 
-    def edit
+  def edit
        @place = Place.find(params[:id])
 
        if @place.user != current_user
        return render text: 'Not Allowed', status: :forbidden
+       end
   end
-    end
 
-    def update
+  def update
        @place = Place.find(params[:id])
         if @place.user != current_user
            return render text: 'Not Allowed', status: :forbidden
@@ -42,9 +42,9 @@ class PlacesController < ApplicationController
         else
            render :edit, status: :unprocessable_entity
         end
-    end
+  end
 
-    def destroy
+  def destroy
        @place = Place.find(params[:id])
        if @place.user != current_user
          return render text: 'Not Allowed', status: :forbidden
@@ -52,12 +52,12 @@ class PlacesController < ApplicationController
 
        @place.destroy
        redirect_to root_path
-    end
+  end
 
   private
 
-    def place_params
+  def place_params
     params.require(:place).permit(:name, :description, :address)
-    end
+  end
 
 end
