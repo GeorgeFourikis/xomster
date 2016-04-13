@@ -1,4 +1,3 @@
-<%= paginate@places %>
 
 <% @places.each do |place| %>
 
@@ -14,6 +13,9 @@
 
 </div>
 
-<hr />
-
 <% end %>
+
+<div class="col-xs-8 col-xs-offset-2">
+<%= paginate@places %>
+</div>
+
