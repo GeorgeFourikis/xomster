@@ -4,6 +4,7 @@
   <br/><br/>
   <p><%= @place.description %></p>
 
+
   <style>
       html, body {
         height: 100%;
@@ -55,10 +56,9 @@ function initMap() {
 </div>
 
 
-
+<h1>Comments</h1>
 
 <% @place.comments.each do |comment| %>
-<div class="col-xs-12 col-sm-6">
   <div>
     <blockquote>
       <% if comment.humanized_rating.present? %>
@@ -68,18 +68,17 @@ function initMap() {
       <small><%= comment.user.email %></small>
     </blockquote>
   </div>
-  </div>
 <% end %>
 
 
 
-<!-- Modal -->
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
+        <h4 class="modal-title" id="myModalLabel">Add a Comment</h4>
         </div>
       <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
         
