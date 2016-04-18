@@ -12,9 +12,11 @@
         margin: 0;
         padding: 0;
       }
+
       #map {
         height: 300px;
       }
+
     </style>
 
     <div id="map"></div>
@@ -38,6 +40,7 @@ function initMap() {
 }
 
     </script>
+
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap">
     </script>
@@ -57,10 +60,10 @@ function initMap() {
 </div>
 
 
-<h1>Comments</h1>
+
 
 <% @place.comments.each do |comment| %>
-  <div>
+  <div class = "col-xs-8 col-xs-offset-2">
     <blockquote>
       <% if comment.humanized_rating.present? %>
         <b><%= comment.humanized_rating %></b> -
@@ -69,6 +72,13 @@ function initMap() {
       <small><%= comment.user.email %></small>
     </blockquote>
   </div>
+<% end %>
+
+<%= @place.photos.each do |photo|%>
+<div class = "col-xs-6 col-xs-offset-3 photos">
+<%= image_tag photo.picture %>
+<%= photo.caption%>
+</div>
 <% end %>
 
 <div class="modal fade" id="myPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -92,13 +102,6 @@ function initMap() {
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
 
 
 
