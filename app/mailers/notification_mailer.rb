@@ -3,6 +3,6 @@ class NotificationMailer < ActionMailer::Base
 
   def comment_added
   	mail(to: "vlahunter@hotmail.com",
-  		subject: "Acomment has been added to your place.")
+  		subject: "A comment has been added to your place.")
   end
 end
